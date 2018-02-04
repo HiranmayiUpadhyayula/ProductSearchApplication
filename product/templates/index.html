@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}
+    <title>Product Search</title>
+{% endblock %}
+
+{%block navigation %}
+        <nav>
+            <a href="{% url 'product_home' %}">Product Search Page</a>
+        </nav>
+{% endblock %}
+
+
+{% block content %}
+<div style="margin-top:20px;" align="center">
+<form method="get" action="{% url 'search-product' %}" >
+    <div class="form-row">
+        <div class="form-group col-md-2"></div>
+        <div class="form-group col-md-4">
+            <select name="categoryType" class="form-control">
+                <option value="ReferenceID" {%ifequal category_type "ReferenceID" %} selected="selected"{% endifequal %}>ReferenceID</option>
+                <option value="ISBN" {%ifequal category_type "ISBN" %} selected="selected"{% endifequal %}>ISBN</option>
+                <option value="UPC" {%ifequal category_type "UPC" %} selected="selected"{% endifequal %}>UPC</option>
+                <option value="EAN" {%ifequal category_type "EAN" %} selected="selected"{% endifequal %}>EAN</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text"  class="form-control" name="productId" value="{{product_id}}"/><br/>
+        </div>
+        <div class="form-group col-md-2"></div>
+    </div>
+    <div class="form-group row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary">Search product</button>
+    </div>
+  </div>
+
+</form>
+    {% block subcontent %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block title %}
+	<title>Product</title>
+	{%endblock %}
+	<link rel="stylesheet" href="{% static "css/demo.css" %}">
+	<link rel="stylesheet" href="{% static "css/header.css" %}">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.14/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<header class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+			{%block navigation %}
+			<nav>
+				<a href="#">Search Page ></a>
+				<a href="#" class="selected">Search Results</a>
+			</nav>
+			{%endblock %}
+		</div>
+
+	</div>
+</header>
+
+<!-- The content of your page would go here. -->
+{%block content%}
+{%endblock%}
+
+</body>
+
+</html>

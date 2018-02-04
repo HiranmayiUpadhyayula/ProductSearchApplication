@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+
+{% block subcontent %}
+{% load underscore_value %}
+
+{% if error_message %}
+
+    {{ error_message }}
+{% else %}
+
+
+<div style="margin-top:200px;" align="center">
+<table  style="width:80%;" class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th class="text-center">Title</th>
+        <th class="text-center">Category</th>
+        <th class="text-center">Payment Method</th>
+        <th class="text-center">Location</th>
+        <th class="text-center">Current Price</th>
+        <th class="text-center">Condition</th>
+        <th class="text-center">Returns Accepted</th>
+    </tr>
+    {% for entry in result_list %}
+    <tr>
+        <td>{{ entry.title.0}}</td>
+        <td>{{ entry.primaryCategory.0.categoryName.0 }}</td>
+        <td class="text-center">{{entry.paymentMethod.0}}</td>
+        <td>{{ entry.location.0}}</td>
+        <td class="text-center">{{ entry.sellingStatus.0.currentPrice.0|dict_:"@currencyId"}} - {{ entry.sellingStatus.0.currentPrice.0|dict_:"__value__"}}</td>
+        <td class="text-center">{{ entry.condition.0.conditionDisplayName.0 }}</td>
+        <td class="text-center">{% ifequal entry.returnsAccepted.0 "true"%} Yes {% else %} No {%endifequal%}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<ul class="pagination">
+    {% for entry in page_num_list %}
+        {%ifequal entry current_page %}
+    <li class="active"><a href="#">{{ entry }}</a></li>
+        {% else %}
+            <li><a href="{%url 'search-product' %}?productId={{ product_id }}&categoryType={{ category_type }}&pageNum={{entry}}">{{entry}}</a></li>
+        {% endifequal %}
+
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endblock %}
