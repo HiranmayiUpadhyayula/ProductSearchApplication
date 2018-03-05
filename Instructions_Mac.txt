@@ -1,0 +1,14 @@
+Go to my Github link: https://github.com/HiranmayiUpadhyayula/ProductSearchApplication
+1.  Download the Zip to your Desktop. (unzip it)
+
+2. You will have to install Django to run this application. The steps are mentioned in the below link. 
+https://www.codingforentrepreneurs.com/blog/install-django-on-mac-or-linux/
+
+3. As mentioned in the Link; from the virtual environment, navigate to the project folder (ProductSearchApplicationMaster) and run the following commands.
+
+pip install -r requirements.txt
+python manage.py runserver
+4. Copy the url from the terminal and run it on your browser along after adding /product to the url.
+
+5. Some test cases to verify are : ReferenceID = 53039031; UPC = 753759077600 
+
